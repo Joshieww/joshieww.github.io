@@ -1,0 +1,13 @@
+div{
+    width:50px;
+    height:50;
+    padding-top:100px;
+    border-width:20;
+    font-weight: bold;
+
+    border-style: solid;
+    border-color: purple;
+    background-color: red;
+}
+
+

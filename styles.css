@@ -1,0 +1,38 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 350px;
+  text-align: center;
+  border: 1px solid #000; 
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container img {
+  width: 100%; 
+  height: auto;
+  border: 1px solid #000; 
+  margin-bottom: 10px; 
+}
+
+table {
+  width: 100%;
+  border: 1px solid #000;
+  background-color: #fff; /* Ensures a white background */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow around the table */
+}
+
+td {
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+}
