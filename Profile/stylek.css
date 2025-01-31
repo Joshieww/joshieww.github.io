@@ -33,7 +33,7 @@ header {
     object-fit: cover;
 }
 
-/* Navigation Bar (Moved Below Header) */
+/* Navigation Bar */
 .navbar {
     width: 100%;
     background-color: red;
@@ -67,51 +67,52 @@ header {
     color: yellow;
 }
 
-/* Certifications Section */
-.certifications {
-    padding: 50px 20px;
+/* Skills Section - Two-Column Vertical Layout */
+.skills {
     background-color: white;
-}
-
-.certifications h2 {
-    color: red;
-}
-
-.cert-list {
+    padding: 50px 20px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
 }
 
-.cert-list img {
-    width: 200px;
-    height: auto;
-    border: 2px solid red;
-    border-radius: 10px;
-    transition: transform 0.3s;
-}
-
-.cert-list img:hover {
-    transform: scale(1.1);
-}
-
-/* About Me Section */
-.about {
-    background-color: white;
-    padding: 50px 20px;
-    max-width: 800px;
-    margin: auto;
-}
-
-.about h2 {
+.skills h2 {
     color: red;
+    margin-bottom: 20px;
 }
 
-.about p {
-    font-size: 18px;
-    line-height: 1.6;
+.skill-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 15px;
+    max-width: 400px; /* Adjust width */
+    width: 100%;
+    justify-content: center;
+}
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.skill img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+.skill:hover {
+    background-color: black;
+    transform: scale(1.05);
 }
 
 /* Projects Section */
@@ -146,6 +147,36 @@ header {
 .project:hover {
     background-color: red;
     color: white;
+    transform: scale(1.1);
+}
+
+/* Certifications Section */
+.certifications {
+    padding: 50px 20px;
+    background-color: white;
+}
+
+.certifications h2 {
+    color: red;
+}
+
+.cert-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.cert-list img {
+    width: 200px;
+    height: auto;
+    border: 2px solid red;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.cert-list img:hover {
     transform: scale(1.1);
 }
 
@@ -184,4 +215,12 @@ header {
 .social-links a:hover {
     background-color: black;
     color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .skill-list {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+        max-width: 250px;
+    }
 }
