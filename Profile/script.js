@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
         about.style.opacity = "1";
     }, 800);
 
-    // Smooth scrolling animation for navbar links
     document.querySelectorAll('.navbar a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
