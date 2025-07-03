@@ -68,6 +68,34 @@ document.addEventListener('DOMContentLoaded', function () {
         section.classList.add('fade-in');
         sectionObserver.observe(section);
     });
+
+    // Create particles
+    function createParticles() {
+        const particles = document.createElement('div');
+        particles.className = 'particles';
+        document.body.appendChild(particles);
+
+        for (let i = 0; i < 15; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Random size between 2 and 6px
+            const size = Math.random() * 4 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            // Random starting position
+            particle.style.left = `${Math.random() * 100}%`;
+            
+            // Random animation duration and delay
+            particle.style.animationDuration = `${Math.random() * 10 + 20}s`;
+            particle.style.animationDelay = `${Math.random() * 10}s`;
+            
+            particles.appendChild(particle);
+        }
+    }
+
+    createParticles();
 });
 
 // Add scroll event for navbar
