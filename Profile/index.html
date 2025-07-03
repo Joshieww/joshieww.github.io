@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joshua Famor - Portfolio</title>
     <link rel="stylesheet" href="stylek.css">
 </head>
@@ -9,7 +11,7 @@
     <header>
         <div class="header-content">
             <img src="Joshua.jpg" alt="Joshua Famor" class="profile-pic">
-            <h1>Hi! I am Joshua Famor</h1>
+            <h1 id="typed" data-text="Hi! I am Joshua Famor"></h1>
         </div>
     </header>
 
@@ -27,95 +29,111 @@
     </nav>
 
     <section id="about" class="about">
-        <h2>About Me</h2>
-        <p>
-            I am a <b>Computer Science student</b> currently working part-time at a <b>BPO company</b>.<br>
-            As the <b>President of the Computer Science department</b>, I actively lead initiatives to improve the learning experience for my peers.
-         <br>   I have a deep <b>passion for learning</b> and continuously explore new technologies to enhance my skills in software development and leadership.
-        </p>
+        <div class="section-container">
+            <h2>About Me</h2>
+            <p>
+                I am a <b>Computer Science student</b> currently working part-time at a <b>BPO company</b>.<br>
+                As the <b>President of the Computer Science department</b>, I actively lead initiatives to improve the learning experience for my peers.
+                <br> I have a deep <b>passion for learning</b> and continuously explore new technologies to enhance my skills in software development and leadership.
+            </p>
+        </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="skill-set">
-        <h2>My Skills</h2>
-        <div class="skills-container">
-            <ul class="skills-list">
-                <li>HTML & CSS</li>
-                <li>JavaScript</li>
-                <li>React.js</li>
-                <li>Node.js</li>
-                <li>Python</li>
-            </ul>
-            <ul class="skills-list">
-                <li>MySQL</li>
-                <li>Java</li>
-                <li>C++</li>
-                <li>Git & GitHub</li>
-                <li>Problem Solving</li>
-            </ul>
+        <div class="section-container">
+            <h2>My Skills</h2>
+            <div class="skills-container">
+                <ul class="skills-list">
+                    <li>HTML & CSS</li>
+                    <li>JavaScript</li>
+                    <li>React.js</li>
+                    <li>Node.js</li>
+                    <li>Python</li>
+                </ul>
+                <ul class="skills-list">
+                    <li>MySQL</li>
+                    <li>Java</li>
+                    <li>C++</li>
+                    <li>Git & GitHub</li>
+                    <li>Problem Solving</li>
+                </ul>
+            </div>
         </div>
     </section>
 
     <section id="projects" class="projects">
-        <h2>My Projects</h2>
-        <div class="project-list">
-            <a href="FamorExplorePHTours.html" class="project">Explore-PH-Tour</a>
-            <a href="FamorCourseSchedule.html" class="project">Course Schedule</a>
-            <a href="famorthree.html" class="project">famorthree</a>
-            <a href="famorfirstday.html" class="project">famorfirstday</a>
-            <a href="famortwo.html" class="project">famortwo</a>
+        <div class="section-container">
+            <h2>My Projects</h2>
+            <div class="project-list">
+                <a href="FamorExplorePHTours.html" class="project">Explore-PH-Tour</a>
+                <a href="FamorCourseSchedule.html" class="project">Course Schedule</a>
+                <a href="famorthree.html" class="project">famorthree</a>
+                <a href="famorfirstday.html" class="project">famorfirstday</a>
+                <a href="famortwo.html" class="project">famortwo</a>
+            </div>
         </div>
     </section>
 
     <section id="certifications" class="certifications">
-        <h2>Certifications</h2>
-        <div class="cert-list">
-            <img src="cert1.png" alt="Certificate 1">
-            <img src="cert2.png" alt="Certificate 2">
-            <img src="cert3.png" alt="Certificate 3">
-            <img src="cert4.png" alt="Certificate 4">
+        <div class="section-container">
+            <h2>Certifications</h2>
+            <div class="cert-list">
+                <img src="cert1.png" alt="Certificate 1">
+                <img src="cert2.png" alt="Certificate 2">
+                <img src="cert3.png" alt="Certificate 3">
+                <img src="cert4.png" alt="Certificate 4">
+            </div>
         </div>
     </section>
 
     <!-- Experience Section -->
     <section id="experience" class="experience">
-        <h2>Work Experience</h2>
-        <p>
-            - <b>BPO Company (Part-time)</b>: Assisting with customer support & IT services.<br>
-            - <b>Computer Science Department President</b>: Leading initiatives & organizing tech events.
-        </p>
+        <div class="section-container">
+            <h2>Work Experience</h2>
+            <p>
+                - <b>BPO Company (Part-time)</b>: Assisting with customer support & IT services.<br>
+                - <b>Computer Science Department President</b>: Leading initiatives & organizing tech events.
+            </p>
+        </div>
     </section>
 
     <!-- Achievements Section -->
     <section id="achievements" class="achievements">
-        <h2>Achievements</h2>
-        <ul>
-            <li>🏆 Led the Computer Science department as President</li>
-            <li>📜 Completed multiple certifications in programming</li>
-            <li>🖥️ Built various projects in Java, Python, and web development</li>
-        </ul>
+        <div class="section-container">
+            <h2>Achievements</h2>
+            <ul>
+                <li>🏆 Led the Computer Science department as President</li>
+                <li>📜 Completed multiple certifications in programming</li>
+                <li>🖥️ Built various projects in Java, Python, and web development</li>
+            </ul>
+        </div>
     </section>
 
     <section id="summative-test" class="summative-test">
-        <h2>Summative Test</h2>
-        <div class="test-list">
-            <a href="https://github.com/Auguzcht/TrackNToms-POS?fbclid=IwY2xjawJDxZpleHRuA2FlbQIxMAABHbJxWgvLXrR7vUjUTSucIbuf9RLVG3T0iOmWhCT04OwB2Q4Jt_9cC_sUJw_aem_0OWK_snbq8_BUACk0FQwsA" class="test">Tom n Toms Inventory System</a>
-            <p>Description: This project is an inventory system for Tom n Toms, designed to manage stock levels, orders, and deliveries efficiently.</p>
-        </div>
-        <div class="sample-photo">
-            <img src="sample.png" alt="Sample Photo">
+        <div class="section-container">
+            <h2>Summative Test</h2>
+            <div class="test-list">
+                <a href="https://github.com/Auguzcht/TrackNToms-POS?fbclid=IwY2xjawJDxZpleHRuA2FlbQIxMAABHbJxWgvLXrR7vUjUTSucIbuf9RLVG3T0iOmWhCT04OwB2Q4Jt_9cC_sUJw_aem_0OWK_snbq8_BUACk0FQwsA" class="test">Tom n Toms Inventory System</a>
+                <p>Description: This project is an inventory system for Tom n Toms, designed to manage stock levels, orders, and deliveries efficiently.</p>
+            </div>
+            <div class="sample-photo">
+                <img src="sample.png" alt="Sample Photo">
+            </div>
         </div>
     </section>
 
     <section id="contact" class="contact">
-        <h2>Contact Me</h2>
-        <p>Email: <a href="mailto:joshuamartinfamor@gmail.com">joshuamartinfamor@gmail.com</a></p>
-        <p>Phone: +123 456 7890</p>
-        <p>Social Media:</p>
-        <div class="social-links">
-            <a href="https://facebook.com" target="_blank">Facebook</a>
-            <a href="https://twitter.com" target="_blank">Twitter</a>
-            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        <div class="section-container">
+            <h2>Contact Me</h2>
+            <p>Email: <a href="mailto:joshuamartinfamor@gmail.com">joshuamartinfamor@gmail.com</a></p>
+            <p>Phone: +123 456 7890</p>
+            <p>Social Media:</p>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank">Facebook</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            </div>
         </div>
     </section>
 
