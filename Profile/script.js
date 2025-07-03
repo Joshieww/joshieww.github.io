@@ -47,6 +47,27 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // Start typing animation
     setTimeout(type, 500);
+
+    // Add fade-in effect for the body
+    document.body.classList.add('loaded');
+
+    // Add fade-in effect for sections
+    const sections = document.querySelectorAll('section');
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                sectionObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    sections.forEach(section => {
+        section.classList.add('fade-in');
+        sectionObserver.observe(section);
+    });
 });
 
 // Add scroll event for navbar
