@@ -1,38 +1,38 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let header = document.querySelector("header");
-    header.style.opacity = "0";
-    setTimeout(() => {
-        header.style.transition = "opacity 1s ease-in-out";
-        header.style.opacity = "1";
-    }, 500);
-
-    let about = document.querySelector(".about");
-    about.style.opacity = "0";
-    setTimeout(() => {
-        about.style.transition = "opacity 1s ease-in-out";
-        about.style.opacity = "1";
-    }, 800);
+document.addEventListener('DOMContentLoaded', function () {
+    const typed = document.getElementById('typed');
+    const text = typed.dataset.text || '';
+    let index = 0;
+    function type() {
+        if (index <= text.length) {
+            typed.textContent = text.substring(0, index);
+            index++;
+            setTimeout(type, 100);
+        }
+    }
+    type();
 
     document.querySelectorAll('.navbar a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-
             const targetId = this.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
-
             if (targetSection) {
                 window.scrollTo({
-                    top: targetSection.offsetTop - 50, // Adjust offset for navbar
+                    top: targetSection.offsetTop - 50,
                     behavior: 'smooth'
                 });
-
-                // Add fade-in effect on scroll
-                targetSection.style.opacity = "0";
-                setTimeout(() => {
-                    targetSection.style.transition = "opacity 0.8s ease-in-out";
-                    targetSection.style.opacity = "1";
-                }, 300);
             }
         });
     });
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('section').forEach(sec => observer.observe(sec));
 });
+
