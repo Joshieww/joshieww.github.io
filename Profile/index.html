@@ -7,21 +7,16 @@
     <meta name="author" content="Joshua Famor">
     <title>Joshua Famor - Portfolio</title>
     <link rel="stylesheet" href="stylek.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="animated-background"></div>
 
-    <header>
-        <div class="header-content">
-            <img src="Joshua.jpg" alt="Joshua Famor" class="profile-pic">
-            <h1 id="typed" data-text="Hi! I am Joshua Famor"></h1>
-        </div>
-    </header>
-
     <!-- Updated Navigation Bar -->
     <nav class="navbar">
         <ul>
+            <li><a href="#intro">Home</a></li>
             <li><a href="#about">About Me</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -32,6 +27,28 @@
         </ul>
     </nav>
 
+    <!-- New Intro Section -->
+    <section id="intro" class="intro-section">
+        <div class="intro-container">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h1 class="intro-name">I'm Joshua Famor</h1>
+                    <p class="intro-tagline">Computer Science Student</p>
+                    <button class="intro-btn" onclick="scrollToProjects()">
+                        View My Projects
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="intro-image">
+                    <div class="intro-image-wrapper">
+                        <img src="Joshua.jpg" alt="Joshua Famor" class="intro-profile-pic">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rest of your sections -->
     <section id="about" class="about">
         <div class="section-container">
             <h2>About Me</h2>
@@ -55,7 +72,6 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="skill-set">
         <div class="section-container">
             <h2>My Skills</h2>
@@ -98,7 +114,6 @@
         <div class="section-container">
             <h2>Certifications</h2>
             <div class="cert-list">
-                <!-- First set of certificates -->
                 <div class="cert-item">
                     <img src="cert1.png" alt="Certificate 1" loading="lazy">
                     <div class="cert-overlay">
@@ -123,43 +138,10 @@
                         <span>Click to View</span>
                     </div>
                 </div>
-                
-                <!-- Second set of certificates -->
-                <div class="cert-item">
-                    <img src="12.png" alt="Certificate" loading="lazy">
-                    <div class="cert-overlay">
-                        <span>Click to View</span>
-                    </div>
-                </div>
-                <div class="cert-item">
-                    <img src="13.png" alt="Certificate" loading="lazy">
-                    <div class="cert-overlay">
-                        <span>Click to View</span>
-                    </div>
-                </div>
-                <div class="cert-item">
-                    <img src="14.png" alt="Certificate" loading="lazy">
-                    <div class="cert-overlay">
-                        <span>Click to View</span>
-                    </div>
-                </div>
-                <div class="cert-item">
-                    <img src="15.png" alt="Certificate" loading="lazy">
-                    <div class="cert-overlay">
-                        <span>Click to View</span>
-                    </div>
-                </div>
-                <div class="cert-item">
-                    <img src="16.png" alt="Certificate" loading="lazy">
-                    <div class="cert-overlay">
-                        <span>Click to View</span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
     <section id="experience" class="experience">
         <div class="section-container">
             <h2>Work Experience</h2>
@@ -172,7 +154,6 @@
                         <p>Assisting with customer support and IT services, handling technical inquiries and providing solutions.</p>
                     </div>
                 </div>
-                
                 <div class="experience-card">
                     <div class="experience-icon">👨‍💼</div>
                     <div class="experience-content">
@@ -181,7 +162,6 @@
                         <p>Leading initiatives, organizing tech events, and improving learning experiences for peers.</p>
                     </div>
                 </div>
-
                 <div class="experience-card">
                     <div class="experience-icon">☕</div>
                     <div class="experience-content">
@@ -194,7 +174,6 @@
         </div>
     </section>
 
-    <!-- Achievements Section -->
     <section id="achievements" class="achievements">
         <div class="section-container">
             <h2>Achievements</h2>
@@ -228,7 +207,7 @@
             <h2>Get In Touch</h2>
             <div class="contact-info">
                 <p>Feel free to reach out for collaborations or just a friendly hello</p>
-                <p>Email: <a href="joshuamartinfamor@gmail.com">joshuamarintinfamor@gmail.com</a></p>
+                <p>Email: <a href="mailto:joshuamartinfamor@gmail.com">joshuamartinfamor@gmail.com</a></p>
             </div>
             <div class="social-links">
                 <a href="https://github.com/Joshieww">

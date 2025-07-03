@@ -22,8 +22,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const targetId = this.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const offsetTop = targetSection.offsetTop - navbarHeight - 10; // Extra 10px buffer
+                
                 window.scrollTo({
-                    top: targetSection.offsetTop - 70,
+                    top: offsetTop,
                     behavior: 'smooth'
                 });
             }
@@ -50,7 +53,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add fade-in effect for the body
     document.body.classList.add('loaded');
-
+    document.body.style.opacity = '1';
+    
     // Add fade-in effect for sections
     const sections = document.querySelectorAll('section');
     const sectionObserver = new IntersectionObserver((entries) => {
@@ -98,13 +102,69 @@ document.addEventListener('DOMContentLoaded', function () {
     createParticles();
 });
 
-// Add scroll event for navbar
+// Update the smooth scroll function to account for fixed navbar
+document.querySelectorAll('.navbar a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+            const offsetTop = targetSection.offsetTop - navbarHeight - 10; // Extra 10px buffer
+            
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Add scroll event for navbar styling
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
+    if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
+    
+});
+
+function scrollToProjects() {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        const offsetTop = projectsSection.offsetTop - navbarHeight - 20;
+        
+        window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Add this to your existing DOMContentLoaded event listener or create a new one
+document.addEventListener('DOMContentLoaded', function() {
+    // Add fade-in effect for the body
+    document.body.style.opacity = '1';
+    
+    // Smooth scroll for navigation links
+    document.querySelectorAll('.navbar a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const offsetTop = targetSection.offsetTop - navbarHeight - 10;
+                
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 });
 
