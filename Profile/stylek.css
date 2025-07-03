@@ -1,10 +1,10 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: white;
-    color: black;
+    background-color: #f5f7fa;
+    color: #333;
     text-align: center;
     scroll-behavior: smooth;
 }
@@ -17,12 +17,13 @@ body {
 
 /* Header */
 header {
-    background-color: red;
+    background: linear-gradient(90deg, #3f51b5, #2196f3);
     color: white;
     padding: 50px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .header-content {
@@ -42,12 +43,13 @@ header {
 /* Navigation Bar */
 .navbar {
     width: 100%;
-    background-color: red;
+    background: linear-gradient(90deg, #3f51b5, #2196f3);
     padding: 15px 0;
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar ul {
@@ -70,7 +72,7 @@ header {
 }
 
 .navbar ul li a:hover {
-    color: yellow;
+    color: #ffeb3b;
 }
 
 /* About Me Section */
@@ -79,10 +81,12 @@ header {
     padding: 50px 20px;
     max-width: 800px;
     margin: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
 }
 
 .about h2 {
-    color: red;
+    color: #3f51b5;
 }
 
 .about p {
@@ -97,7 +101,7 @@ header {
 }
 
 .projects h2 {
-    color: red;
+    color: #3f51b5;
 }
 
 .project-list {
@@ -111,18 +115,19 @@ header {
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
-    color: red;
+    color: #3f51b5;
     background-color: white;
     padding: 10px 15px;
     border-radius: 5px;
-    border: 2px solid red;
+    border: 2px solid #3f51b5;
     transition: background 0.3s, color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .project:hover {
-    background-color: red;
+    background-color: #3f51b5;
     color: white;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 /* Certifications Section */
@@ -132,7 +137,7 @@ header {
 }
 
 .certifications h2 {
-    color: red;
+    color: #3f51b5;
 }
 
 .cert-list {
@@ -146,7 +151,7 @@ header {
 .cert-list img {
     width: 200px;
     height: auto;
-    border: 2px solid red;
+    border: 2px solid #3f51b5;
     border-radius: 10px;
     transition: transform 0.3s;
 }
@@ -162,7 +167,7 @@ header {
 }
 
 .skill-set h2 {
-    color: red;
+    color: #3f51b5;
     margin-bottom: 20px;
 }
 
@@ -195,7 +200,7 @@ header {
 
 /* Contact Section */
 .contact {
-    background-color: red;
+    background: linear-gradient(90deg, #3f51b5, #2196f3);
     color: white;
     padding: 50px 20px;
 }
@@ -219,20 +224,20 @@ header {
     margin: 5px;
     padding: 10px;
     background-color: white;
-    color: red;
+    color: #3f51b5;
     border-radius: 5px;
     text-decoration: none;
     transition: background 0.3s, color 0.3s;
 }
 
 .social-links a:hover {
-    background-color: black;
+    background-color: #3f51b5;
     color: white;
 }
 
 /* Footer */
 footer {
-    background-color: red;
+    background: linear-gradient(90deg, #3f51b5, #2196f3);
     color: white;
     text-align: center;
     padding: 10px;
