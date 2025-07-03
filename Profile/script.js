@@ -174,7 +174,7 @@ function toggleMobileMenu() {
     const toggle = document.querySelector('.navbar-toggle');
     
     menu.classList.toggle('show');
-    
+    //check
     // Change hamburger icon
     const icon = toggle.querySelector('i');
     if (menu.classList.contains('show')) {
