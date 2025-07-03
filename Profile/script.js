@@ -168,3 +168,77 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Mobile menu toggle
+function toggleMobileMenu() {
+    const menu = document.getElementById('navbar-menu');
+    const toggle = document.querySelector('.navbar-toggle');
+    
+    menu.classList.toggle('show');
+    
+    // Change hamburger icon
+    const icon = toggle.querySelector('i');
+    if (menu.classList.contains('show')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+    } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    }
+}
+
+// Enhanced navbar scroll effect
+let lastScrollTop = 0;
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Add scrolled class
+    if (scrollTop > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+    
+    // Hide/show navbar on scroll (optional)
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+        navbar.style.transform = 'translateY(-100%)';
+    } else {
+        navbar.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollTop = scrollTop;
+});
+
+// Active nav item highlighting
+function updateActiveNav() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.navbar a');
+    
+    sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        const navLink = document.querySelector(`a[href="#${section.id}"]`);
+        
+        if (rect.top <= 100 && rect.bottom >= 100) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            if (navLink) navLink.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', updateActiveNav);
+window.addEventListener('load', updateActiveNav);
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+    const navbar = document.querySelector('.navbar');
+    const menu = document.getElementById('navbar-menu');
+    const toggle = document.querySelector('.navbar-toggle');
+    
+    if (!navbar.contains(event.target) && menu.classList.contains('show')) {
+        menu.classList.remove('show');
+        const icon = toggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    }
+});
+

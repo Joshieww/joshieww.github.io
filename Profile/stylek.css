@@ -91,40 +91,286 @@ body {
 /* Navbar styles */
 .navbar {
     background: rgba(30, 41, 59, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 15px 0;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 12px 0;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrolled state for navbar */
+.navbar.scrolled {
+    background: rgba(30, 41, 59, 0.98);
+    padding: 8px 0;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.navbar:hover::before {
+    opacity: 1;
 }
 
 .navbar ul {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 20px;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    align-items: center;
+    gap: 8px;
     flex-wrap: wrap;
     list-style: none;
+    position: relative;
+}
+
+.navbar ul li {
+    position: relative;
 }
 
 .navbar ul li a {
     color: #e2e8f0;
     text-decoration: none;
-    padding: 10px 20px;
-    font-size: 1rem;
+    padding: 12px 20px;
+    font-size: 0.95rem;
     font-weight: 500;
-    transition: all 0.3s ease;
-    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.02em;
+}
+
+/* Hover effect background */
+.navbar ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 12px;
+}
+
+.navbar ul li a:hover::before {
+    opacity: 1;
 }
 
 .navbar ul li a:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+}
+
+/* Active state */
+.navbar ul li a.active {
+    color: #ffffff;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3));
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+}
+
+/* Add icons to nav items */
+.navbar ul li a[href="#intro"]::before { content: '🏠'; }
+.navbar ul li a[href="#about"]::before { content: '👤'; }
+.navbar ul li a[href="#skills"]::before { content: '⚡'; }
+.navbar ul li a[href="#projects"]::before { content: '💼'; }
+.navbar ul li a[href="#certifications"]::before { content: '🏆'; }
+.navbar ul li a[href="#experience"]::before { content: '💻'; }
+.navbar ul li a[href="#achievements"]::before { content: '🌟'; }
+.navbar ul li a[href="#contact"]::before { content: '📧'; }
+
+.navbar ul li a::before {
+    font-size: 0.9rem;
+    margin-right: 6px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.navbar ul li a:hover::before {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Mobile hamburger menu */
+.navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #e2e8f0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggle:hover {
     background: rgba(99, 102, 241, 0.2);
     color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 0;
+    }
+    
+    .navbar ul {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(30, 41, 59, 0.98);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        border-radius: 0 0 20px 20px;
+        padding: 20px;
+        gap: 4px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    
+    .navbar ul.show {
+        max-height: 500px;
+    }
+    
+    .navbar-toggle {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+    }
+    
+    .navbar ul li {
+        width: 100%;
+    }
+    
+    .navbar ul li a {
+        width: 100%;
+        padding: 15px 20px;
+        justify-content: flex-start;
+        border-radius: 12px;
+    }
+    
+    .navbar ul li a:hover {
+        transform: translateX(10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar ul li a {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .navbar ul li a::before {
+        font-size: 0.8rem;
+    }
+}
+
+/* Smooth scroll offset compensation */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+/* Loading animation for navbar */
+.navbar ul li {
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: navItemFadeIn 0.6s ease forwards;
+}
+
+.navbar ul li:nth-child(1) { animation-delay: 0.1s; }
+.navbar ul li:nth-child(2) { animation-delay: 0.2s; }
+.navbar ul li:nth-child(3) { animation-delay: 0.3s; }
+.navbar ul li:nth-child(4) { animation-delay: 0.4s; }
+.navbar ul li:nth-child(5) { animation-delay: 0.5s; }
+.navbar ul li:nth-child(6) { animation-delay: 0.6s; }
+.navbar ul li:nth-child(7) { animation-delay: 0.7s; }
+.navbar ul li:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes navItemFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navbar brand/logo area (optional) */
+.navbar-brand {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    display: none; /* Show only if you want a brand name */
+}
+
+/* Improved navbar for better UX */
+.navbar ul li a {
+    position: relative;
+    overflow: visible;
+}
+
+/* Tooltip effect on hover */
+.navbar ul li a::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 41, 59, 0.95);
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    z-index: 1001;
+}
+
+.navbar ul li a:hover::after {
+    opacity: 1;
+    bottom: -30px;
+}
+
+/* Hide tooltips on mobile */
+@media (max-width: 768px) {
+    .navbar ul li a::after {
+        display: none;
+    }
 }
 
 /* Reset and base styles */
@@ -474,39 +720,42 @@ section h2::after {
 
 /* Certifications Section */
 .certifications {
-    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
-    padding: 50px 0;
-}
-
-.certifications h2 {
-    color: #3f51b5;
+    background: #f8fafc;
+    padding: 60px 0;
 }
 
 .cert-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
 }
 
 .cert-item {
     position: relative;
+    background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
     cursor: pointer;
-    aspect-ratio: 16/9;
-    background: white;
+}
+
+.cert-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .cert-item img {
     width: 100%;
-    height: 100%;
+    height: 200px;
     object-fit: cover;
-    transition: all 0.3s ease;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.cert-item:hover img {
+    transform: scale(1.05);
 }
 
 .cert-overlay {
@@ -515,168 +764,47 @@ section h2::after {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(44, 62, 80, 0.8);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(139, 92, 246, 0.9));
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: all 0.3s ease;
-}
-
-.cert-overlay span {
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-}
-
-.cert-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-}
-
-.cert-item:hover img {
-    transform: scale(1.05);
+    transition: opacity 0.3s ease;
 }
 
 .cert-item:hover .cert-overlay {
     opacity: 1;
 }
 
-.cert-item:hover .cert-overlay span {
-    transform: translateY(0);
-}
-
-.cert-item:nth-child(3n+1) {
-    animation-delay: 0.1s;
-}
-
-.cert-item:nth-child(3n+2) {
-    animation-delay: 0.2s;
-}
-
-.cert-item:nth-child(3n+3) {
-    animation-delay: 0.3s;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.cert-item {
-    animation: fadeInUp 0.6s ease-out forwards;
-    opacity: 0;
-}
-
-/* 🔥 Skill Set Section (Fixed Image Size) */
-.skill-set {
-    padding: 50px 20px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-}
-
-.skills-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    padding: 20px 0;
-}
-
-/* Skill Set Images - Large and Responsive */
-.skills-container img {
-    width: 200px; /* Larger width */
-    height: 200px; /* Larger height */
-    max-width: 100%; /* Ensures responsiveness */
-    display: block;
-    margin: 10px auto; /* Centers images */
-    transition: transform 0.3s ease-in-out;
-    border-radius: 10px; /* Rounded edges */
-    object-fit: contain; /* Prevents stretching */
-}
-
-/* Hover Effect on Skills */
-.skills-container img:hover {
-    transform: scale(1.1);
-}
-
-/* Updated Skills section */
-.skills-list {
-    list-style: none;
-    padding: 0;
-}
-
-.skills-list li {
-    background: white;
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 12px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    color: #2c3e50;
-    border: 1px solid #e9ecef;
+.cert-overlay span {
+    color: white;
     font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
 }
 
-.skills-list li::before {
-    content: '⚡';
-    margin-right: 15px;
-    font-size: 1.2rem;
-    color: #3f51b5;
-    transition: all 0.3s ease;
+/* Responsive design for certifications */
+@media (max-width: 768px) {
+    .cert-list {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .cert-item img {
+        height: 150px;
+    }
 }
 
-.skills-list li::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #3f51b5, #2196f3);
-    transition: width 0.3s ease;
-}
-
-.skills-list li:hover {
-    transform: translateX(10px);
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    box-shadow: 0 8px 20px rgba(63, 81, 181, 0.15);
-    border-color: #3f51b5;
-}
-
-.skills-list li:hover::before {
-    transform: scale(1.2) rotate(15deg);
-    color: #2196f3;
-}
-
-.skills-list li:hover::after {
-    width: 100%;
-}
-
-/* Add skill level indicators */
-.skills-list li span {
-    margin-left: auto;
-    font-size: 0.9rem;
-    color: #666;
-    opacity: 0;
-    transform: translateX(20px);
-    transition: all 0.3s ease;
-}
-
-.skills-list li:hover span {
-    opacity: 1;
-    transform: translateX(0);
+@media (max-width: 480px) {
+    .cert-list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .cert-item img {
+        height: 120px;
+    }
 }
 
 /* Experience Section Styling */
@@ -700,7 +828,7 @@ section h2::after {
 
 .experience-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     border-color: #3f51b5;
 }
 
@@ -757,7 +885,7 @@ section h2::after {
 
 .achievement-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     border-color: #3f51b5;
 }
 
@@ -1208,49 +1336,182 @@ section h2::after {
     }
 }
 
-/* Responsive */
+/* Skills Section Styling */
+.skill-set {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    padding: 60px 0;
+    position: relative;
+}
+
+.skill-set .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.skill-set h2 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 50px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.skill-set h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 2px;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.skills-list li {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    padding: 20px 25px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.skills-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.skills-list li:hover {
+    transform: translateX(10px);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2);
+    border-color: #6366f1;
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.skills-list li:hover::before {
+    transform: scaleY(1);
+}
+
+.skills-list li span {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.skills-list li:hover span {
+    background: linear-gradient(135deg, #2c3e50, #1e293b);
+    transform: scale(1.05);
+}
+
+/* Add skill icons */
+.skills-list li::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #6366f1;
+    border-radius: 50%;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.skills-list li:hover::after {
+    background: #2c3e50;
+    transform: translateY(-50%) scale(1.2);
+}
+
+/* Responsive Design for Skills */
 @media (max-width: 768px) {
-    .intro-content {
+    .skills-container {
         grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
+        gap: 30px;
     }
     
-    .intro-name {
-        font-size: 2.5rem;
+    .skills-list li {
+        padding: 15px 20px;
+        font-size: 1rem;
     }
     
-    .intro-tagline {
-        font-size: 1.3rem;
-    }
-    
-    .intro-image-wrapper {
-        width: 300px;
-        height: 300px;
-    }
-    
-    .intro-profile-pic {
-        width: 250px;
-        height: 250px;
+    .skill-set h2 {
+        font-size: 2rem;
     }
 }
 
 @media (max-width: 480px) {
-    .intro-name {
-        font-size: 2rem;
+    .skills-list li {
+        padding: 12px 15px;
+        font-size: 0.95rem;
     }
     
-    .intro-tagline {
-        font-size: 1.1rem;
+    .skills-list li span {
+        font-size: 0.8rem;
+        padding: 4px 10px;
     }
     
-    .intro-image-wrapper {
-        width: 250px;
-        height: 250px;
+    .skill-set h2 {
+        font-size: 1.8rem;
     }
-    
-    .intro-profile-pic {
-        width: 200px;
-        height: 200px;
+}
+
+/* Animation for skills section */
+.skills-list li {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.skills-list li:nth-child(1) { animation-delay: 0.1s; }
+.skills-list li:nth-child(2) { animation-delay: 0.2s; }
+.skills-list li:nth-child(3) { animation-delay: 0.3s; }
+.skills-list li:nth-child(4) { animation-delay: 0.4s; }
+.skills-list li:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
