@@ -168,13 +168,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    updateActiveNav();
+});
+
 // Mobile menu toggle
 function toggleMobileMenu() {
     const menu = document.getElementById('navbar-menu');
     const toggle = document.querySelector('.navbar-toggle');
     
     menu.classList.toggle('show');
-    //check
+    
     // Change hamburger icon
     const icon = toggle.querySelector('i');
     if (menu.classList.contains('show')) {
@@ -226,7 +230,6 @@ function updateActiveNav() {
 }
 
 window.addEventListener('scroll', updateActiveNav);
-window.addEventListener('load', updateActiveNav);
 
 // Close mobile menu when clicking outside
 document.addEventListener('click', function(event) {
@@ -241,4 +244,50 @@ document.addEventListener('click', function(event) {
         icon.classList.add('fa-bars');
     }
 });
+
+// Scroll to projects function
+function scrollToProjects() {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        const offsetTop = projectsSection.offsetTop - navbarHeight - 20;
+        
+        window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Certificate modal functionality with zoom
+function openCertModal(element) {
+    const img = element.querySelector('img');
+    if (img) {
+        const modal = document.createElement('div');
+        modal.className = 'cert-modal';
+        modal.innerHTML = `
+            <div class="cert-modal-content">
+                <span class="cert-close" onclick="this.parentElement.parentElement.remove();">&times;</span>
+                <img src="${img.src}" alt="${img.alt}" class="cert-modal-img">
+            </div>
+        `;
+        document.body.appendChild(modal);
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                document.body.removeChild(modal);
+            }
+        });
+        
+        // Close on Escape key
+        const closeOnEscape = (e) => {
+            if (e.key === 'Escape' && modal.parentElement) {
+                document.body.removeChild(modal);
+                document.removeEventListener('keydown', closeOnEscape);
+            }
+        };
+        document.addEventListener('keydown', closeOnEscape);
+    }
+}
 
