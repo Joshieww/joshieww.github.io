@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,267 +6,55 @@
     <meta name="description" content="Portfolio showcasing projects, skills and experience of Joshua Famor">
     <meta name="author" content="Joshua Famor">
     <title>Joshua Famor - Portfolio</title>
-    <link rel="stylesheet" href="stylek.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #0a0a0b; --surface: #111113; --surface-2: #18181b; --border: #27272a; --text: #fafafa; --muted: #a1a1aa; --accent: #3b82f6; --accent-dim: rgba(59,130,246,.1); --accent-border: rgba(59,130,246,.3); }
+        html { scroll-behavior: smooth; } body { background: var(--bg); color: var(--text); font: 16px/1.6 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+        nav { position: fixed; inset: 0 0 auto; z-index: 10; background: rgba(10,10,11,.82); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: 1100px; height: 64px; margin: auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; } .nav-logo { font: 700 1.15rem 'Space Grotesk', sans-serif; } .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 4px; list-style: none; } .nav-links a { color: var(--muted); text-decoration: none; font-size: .875rem; font-weight: 500; padding: 8px 12px; border-radius: 8px; transition: .2s; } .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--surface-2); }
+        .nav-toggle { display: none; background: none; border: 1px solid var(--border); color: var(--text); padding: 8px 10px; border-radius: 8px; cursor: pointer; } section { padding: 100px 24px; } .section-inner, .hero-inner { max-width: 1100px; margin: auto; }
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 110px; position: relative; overflow: hidden; } .hero::before { content: ''; position: absolute; width: 700px; height: 700px; top: -40%; right: -20%; background: radial-gradient(circle, rgba(59,130,246,.1), transparent 70%); pointer-events: none; } .hero-inner { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .hero-badge, .section-label { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; font-size: .8rem; font-weight: 600; } .hero-badge { padding: 6px 14px; border: 1px solid var(--accent-border); background: var(--accent-dim); border-radius: 100px; text-transform: none; letter-spacing: 0; margin-bottom: 24px; } .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; } .hero-name { font-size: 3.5rem; line-height: 1.1; letter-spacing: -.03em; margin-bottom: 16px; } .hero-tagline, .section-desc { color: var(--muted); } .hero-tagline { max-width: 440px; font-size: 1.15rem; margin-bottom: 36px; }
+        .hero-actions, .social-row { display: flex; gap: 12px; flex-wrap: wrap; } .btn-primary, .btn-secondary, .social-btn { display: inline-flex; align-items: center; gap: 8px; font: 600 .95rem 'DM Sans', sans-serif; text-decoration: none; cursor: pointer; transition: .2s; } .btn-primary { border: 0; border-radius: 10px; padding: 14px 28px; background: var(--accent); color: white; } .btn-primary:hover { filter: brightness(1.15); transform: translateY(-1px); } .btn-secondary { padding: 13px 27px; border: 1px solid var(--border); border-radius: 10px; color: var(--text); } .btn-secondary:hover, .social-btn:hover { background: var(--surface-2); border-color: var(--muted); }
+        .hero-image-wrap { display: flex; justify-content: center; } .hero-img { width: 380px; height: 380px; border: 1px solid var(--border); border-radius: 24px; object-fit: cover; box-shadow: 0 24px 80px rgba(0,0,0,.4); } .divider { max-width: 1100px; margin: auto; border: 0; border-top: 1px solid var(--border); }
+        .section-label { margin-bottom: 12px; } .section-title { font-size: 2.25rem; margin-bottom: 16px; } .section-desc { max-width: 560px; font-size: 1.05rem; margin-bottom: 48px; } .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; } .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 16px; } .about-text strong { color: var(--text); } .about-img { width: 100%; border: 1px solid var(--border); border-radius: 16px; object-fit: cover; } .about-caption { display: block; color: var(--muted); font-size: .85rem; text-align: center; margin-top: 10px; }
+        .skills-grid, .projects-grid, .ach-grid, .cert-grid { display: grid; gap: 16px; } .skills-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; } .skill-item, .project-card, .exp-card, .ach-card, .cert-card { background: var(--surface); border: 1px solid var(--border); transition: .2s; } .skill-item:hover, .project-card:hover, .exp-card:hover, .ach-card:hover, .cert-card:hover { border-color: var(--accent-border); } .skill-item { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; border-radius: 12px; } .skill-level { color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border); border-radius: 6px; padding: 4px 10px; font-size: .75rem; font-weight: 600; text-transform: uppercase; }
+        .projects-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } .project-card { display: block; padding: 32px; border-radius: 16px; color: inherit; text-decoration: none; } .project-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.3); } .project-card-icon, .exp-icon { display: flex; align-items: center; justify-content: center; color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border); } .project-card-icon { width: 40px; height: 40px; border-radius: 10px; margin-bottom: 20px; } .project-card h3 { font-size: 1.2rem; margin-bottom: 10px; } .project-card p, .exp-card p, .ach-card p { color: var(--muted); font-size: .9rem; } .arrow { display: inline-flex; gap: 6px; color: var(--accent); margin-top: 16px; font-size: .85rem; font-weight: 600; }
+        .exp-grid { display: grid; gap: 16px; } .exp-card { display: grid; grid-template-columns: auto 1fr; gap: 24px; padding: 32px; border-radius: 16px; } .exp-icon { width: 48px; height: 48px; border-radius: 12px; font-size: 1.3rem; } .exp-card h3 { font-size: 1.15rem; } .exp-role { display: block; color: var(--accent); font-size: .875rem; font-weight: 500; margin: 4px 0 10px; }
+        .ach-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); } .ach-card { padding: 28px; border-radius: 16px; text-align: center; } .ach-icon { display: block; color: var(--accent); font-size: 1.8rem; margin-bottom: 14px; } .ach-card h3 { font-size: 1.05rem; margin-bottom: 8px; } .cert-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); } .cert-card { position: relative; overflow: hidden; border-radius: 12px; cursor: pointer; } .cert-card img { display: block; width: 100%; height: 190px; object-fit: cover; } .cert-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--accent); background: rgba(10,10,11,.85); opacity: 0; transition: .2s; } .cert-card:hover .cert-overlay { opacity: 1; }
+        .contact-section { background: var(--surface); border-top: 1px solid var(--border); text-align: center; } .contact-inner .section-desc { margin-left: auto; margin-right: auto; } .contact-email { color: var(--accent); font-size: 1.15rem; font-weight: 600; } .social-row { justify-content: center; margin-top: 32px; } .social-btn { padding: 10px 20px; border: 1px solid var(--border); border-radius: 10px; color: var(--text); background: var(--surface-2); font-size: .875rem; }
+        .cert-modal { position: fixed; inset: 0; z-index: 20; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.9); } .cert-modal img { max-width: 90%; max-height: 85vh; object-fit: contain; } .cert-modal-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; background: rgba(255,255,255,.1); color: white; font-size: 1.2rem; cursor: pointer; } section:not(.hero) { opacity: 0; transform: translateY(24px); transition: opacity .6s, transform .6s; } section.visible { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) { .hero-inner, .about-grid { grid-template-columns: 1fr; gap: 48px; } .hero { text-align: center; } .hero-tagline { margin-left: auto; margin-right: auto; } .hero-actions { justify-content: center; } .hero-name { font-size: 2.5rem; } .hero-img { width: 280px; height: 280px; } .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; padding: 16px; background: rgba(10,10,11,.96); border-bottom: 1px solid var(--border); } .nav-links.show { display: flex; } .nav-toggle { display: block; } .section-title { font-size: 1.8rem; } } @media (max-width: 480px) { .hero-name { font-size: 2rem; } .hero-img { width: 220px; height: 220px; } .exp-card { padding: 22px; gap: 16px; } }
+    </style>
 </head>
 <body>
-    <div class="animated-background"></div>
-
-    <!-- Updated Navigation Bar -->
-    <nav class="navbar">
-        <button class="navbar-toggle" onclick="toggleMobileMenu()">
-            <i class="fas fa-bars"></i>
-        </button>
-        <ul id="navbar-menu">
-            <li><a href="#intro" data-tooltip="Home">Home</a></li>
-            <li><a href="#about" data-tooltip="About Me">About Me</a></li>
-            <li><a href="#skills" data-tooltip="Skills">Skills</a></li>
-            <li><a href="#projects" data-tooltip="Projects">Projects</a></li>
-            <li><a href="#certifications" data-tooltip="Certifications">Certifications</a></li>
-            <li><a href="#experience" data-tooltip="Experience">Experience</a></li>
-            <li><a href="#achievements" data-tooltip="Achievements">Achievements</a></li>
-            <li><a href="#contact" data-tooltip="Contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- New Intro Section -->
-    <section id="intro" class="intro-section">
-        <div class="intro-container">
-            <div class="intro-content">
-                <div class="intro-text">
-                    <h1 class="intro-name">I'm Joshua Famor</h1>
-                    <p class="intro-tagline">Computer Science Student</p>
-                    <button class="intro-btn" onclick="scrollToProjects()">
-                        View My Projects
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-                <div class="intro-image">
-                    <div class="intro-image-wrapper">
-                        <img src="Joshnew.jpg" alt="Joshua Famor" class="intro-profile-pic">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Rest of your sections -->
-    <section id="about" class="about">
-        <div class="section-container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I am a <b>Computer Science student</b> with a passion for technology and innovation. Currently working part-time at a <b>BPO company</b>, I balance academic excellence with practical industry experience.
-                    </p>
-                    <p>
-                        As the <b>Former President of the Computer Science department</b> at Mapua Malayan Colleges Mindanao, I lead initiatives to enhance the learning experience for my peers and organize impactful tech events.
-                    </p>
-                    <p>
-                        My <b>passion for learning</b> drives me to continuously explore new technologies, with a focus on software development and leadership. I believe in creating solutions that make a difference in people's lives.
-                    </p>
-                </div>
-                <div class="team-image">
-                    <img src="team.jpg" alt="CS Department Team" />
-                    <span class="image-caption">Computer Science Department Team</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="skill-set">
-        <div class="section-container">
-            <h2>My Skills</h2>
-            <div class="skills-container">
-                <ul class="skills-list">
-                    <li>HTML & CSS <span>Advanced</span></li>
-                    <li>JavaScript <span>Intermediate</span></li>
-                    <li>Python <span>Advanced</span></li>
-                    <li>AI Studios <span>Intermediate</span></li>
-                    <li>Power BI <span>Advanced</span></li>
-                </ul>
-                <ul class="skills-list">
-                    <li>MySQL <span>Advanced</span></li>
-                    <li>Java <span>Intermediate</span></li>
-                    <li>C++ <span>Intermediate</span></li>
-                    <li>Git & GitHub <span>Advanced</span></li>
-                    <li>Problem Solving <span>Advanced</span></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="projects">
-        <div class="section-container">
-            <h2>My Projects</h2>
-            <div class="project-list">
-                <a href="https://auguzcht.github.io/TokenMate-Automata/?fbclid=IwY2xjawLTcFBleHRuA2FlbQIxMQABHnmAYaUDB1Lg8ccVtMZarAGPstR7fynBpdPDuhZ7AM4hz_fhCC_C1fNZVPCU_aem_DzWnjJrVEPO4IGMoDZwOww" class="project" target="_blank">
-                    <strong>TokenMate Automata</strong>
-                    <p class="project-description">A tool for automating token management and verification processes</p>
-                </a>
-                <a href="https://trackntoms-pos.vercel.app/reports?tab=financial" class="project" target="_blank">
-                    <strong>TrackNToms POS System</strong>
-                    <p class="project-description">Point of Sale system with financial reporting capabilities</p>
-                </a>
-                <a href="https://ecostep-tau.vercel.app" class="project" target="_blank">
-                    <strong>EcoStep</strong>
-                    <p class="project-description">Sustainable environmental tracking and eco-friendly initiative platform</p>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="certifications" class="certifications">
-        <div class="section-container">
-            <h2>Certifications</h2>
-            <div class="cert-list">
-                <div class="cert-item">
-                    <img src="cert1.png" alt="Certificate 1" loading="lazy">
-                    <div class="cert-overlay">
-                        <span>Click to View</span>
-                    </div>
-                </div>
-                <div class="cert-item">
-                    <img src="cert2.png" alt="Certificate 2" loading="lazy">
-                    <div class="cert-overlay">
-                        <span>Click to View</span>
-                    </div>
-                </div>
-                <div class="cert-item">
-                    <img src="cert3.png" alt="Certificate 3" loading="lazy">
-                    <div class="cert-overlay">
-                        <span>Click to View</span>
-                    </div>
-                </div>
-                <div class="cert-item">
-                    <img src="cert4.png" alt="Certificate 4" loading="lazy">
-                    <div class="cert-overlay">
-                        <span>Click to View</span>
-                    </div>
-                </div>
-                <div class="cert-item">
-                    <img src="12.png" alt="Certificate 12" loading="lazy">
-                    <div class="cert-overlay">
-                        <span>Click to View</span>
-                    </div>
-                </div>
-                <div class="cert-item">
-                    <img src="13.png" alt="Certificate 13" loading="lazy">
-                    <div class="cert-overlay">
-                        <span>Click to View</span>
-                    </div>
-                </div>
-                <div class="cert-item">
-                    <img src="14.png" alt="Certificate 14" loading="lazy">
-                    <div class="cert-overlay">
-                        <span>Click to View</span>
-                    </div>
-                </div>
-                <div class="cert-item">
-                    <img src="15.png" alt="Certificate 15" loading="lazy">
-                    <div class="cert-overlay">
-                        <span>Click to View</span>
-                    </div>
-                </div>
-                <div class="cert-item">
-                    <img src="16.png" alt="Certificate 16" loading="lazy">
-                    <div class="cert-overlay">
-                        <span>Click to View</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience" class="experience">
-        <div class="section-container">
-            <h2>Work Experience</h2>
-            <div class="experience-grid">
-                <div class="experience-card">
-                    <div class="experience-icon">💼</div>
-                    <div class="experience-content">
-                        <h3>BPO Company</h3>
-                        <span class="experience-title">Customer Support & IT Services</span>
-                        <p>Assisting with customer support and IT services, handling technical inquiries and providing solutions.</p>
-                    </div>
-                </div>
-                <div class="experience-card">
-                    <div class="experience-icon">👨‍💼</div>
-                    <div class="experience-content">
-                        <h3>Computer Science Department</h3>
-                        <span class="experience-title">Department President</span>
-                        <p>Leading initiatives, organizing tech events, and improving learning experiences for peers.</p>
-                    </div>
-                </div>
-                <div class="experience-card">
-                    <div class="experience-icon">☕</div>
-                    <div class="experience-content">
-                        <h3>Tom N Toms</h3>
-                        <span class="experience-title">Barista</span>
-                        <p>Crafting beverages, managing inventory, and providing excellent customer service in a fast-paced environment.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="achievements" class="achievements">
-        <div class="section-container">
-            <h2>Achievements</h2>
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <span class="achievement-icon">🏆</span>
-                    <h3>Department Leadership</h3>
-                    <p>Led the Computer Science department as President, organizing tech events and initiatives</p>
-                </div>
-                <div class="achievement-card">
-                    <span class="achievement-icon">📚</span>
-                    <h3>Dean's Lister</h3>
-                    <p>Consistent Dean's Lister maintaining academic excellence throughout the program</p>
-                </div>
-                <div class="achievement-card">
-                    <span class="achievement-icon">🌏</span>
-                    <h3>International Leadership</h3>
-                    <p>Team Leader for Thailand Leader's Conference, representing the institution</p>
-                </div>
-                <div class="achievement-card">
-                    <span class="achievement-icon">📊</span>
-                    <h3>Technical Expertise</h3>
-                    <p>Specialized in Data Science and Backend Development, building robust databases and implementing data-driven solutions</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="contact-container">
-            <h2>Get In Touch</h2>
-            <div class="contact-info">
-                <p>Feel free to reach out for collaborations or just a friendly hello</p>
-                <p>Email: <a href="mailto:joshuamartinfamor@gmail.com">joshuamartinfamor@gmail.com</a></p>
-            </div>
-            <div class="social-links">
-                <a href="https://github.com/Joshieww">
-                    <i class="fab fa-github"></i>
-                    GitHub
-                </a>
-                <a href="https://www.linkedin.com/in/joshua-famor-069a94254">
-                    <i class="fab fa-linkedin"></i>
-                    LinkedIn
-                </a>
-                <a href="https://twitter.com/yourusername">
-                    <i class="fab fa-twitter"></i>
-                    Twitter
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <button class="theme-toggle" onclick="toggleTheme()">
-        <i class="fas fa-moon"></i>
-    </button>
-
-    <script src="script.js"></script>
+    <nav><div class="nav-inner"><div class="nav-logo">Joshua<span>.</span></div><button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button><ul class="nav-links" id="navbar-menu"><li><a href="#intro">Home</a></li><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#certifications">Certs</a></li><li><a href="#experience">Experience</a></li><li><a href="#achievements">Achievements</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
+    <section id="intro" class="hero visible"><div class="hero-inner"><div><div class="hero-badge">Available for opportunities</div><h1 class="hero-name">I'm Joshua Famor</h1><p class="hero-tagline">Computer Science student building practical, thoughtful solutions through software, data, and leadership.</p><div class="hero-actions"><button class="btn-primary" onclick="scrollToProjects()">View My Projects <i class="fas fa-arrow-right"></i></button><a class="btn-secondary" href="#contact">Let's Connect</a></div></div><div class="hero-image-wrap"><img class="hero-img" src="Joshnew.jpg" alt="Joshua Famor" fetchpriority="high"></div></div></section>
+    <hr class="divider">
+    <section id="about"><div class="section-inner"><div class="section-label">About me</div><h2 class="section-title">Curious by nature, practical by craft.</h2><p class="section-desc">A computer science student who enjoys turning ideas into useful, human-centered technology.</p><div class="about-grid"><div class="about-text"><p>I am a <strong>Computer Science student</strong> with a passion for technology and innovation. Currently working part-time at a <strong>BPO company</strong>, I balance academic excellence with practical industry experience.</p><p>As the <strong>Former President of the Computer Science department</strong> at Mapua Malayan Colleges Mindanao, I led initiatives to improve the learning experience for my peers and organized impactful tech events.</p><p>My <strong>passion for learning</strong> keeps me exploring software development, data, and leadership while creating solutions that make a difference in people's lives.</p></div><div><img class="about-img" src="team.jpg" alt="Computer Science Department Team" loading="lazy"><span class="about-caption">Computer Science Department Team</span></div></div></div></section>
+    <hr class="divider">
+    <section id="skills"><div class="section-inner"><div class="section-label">Capabilities</div><h2 class="section-title">Tools I work with.</h2><p class="section-desc">A growing toolkit shaped by coursework, projects, and hands-on problem solving.</p><div class="skills-grid"><div class="skill-item"><span>HTML &amp; CSS</span><span class="skill-level">Advanced</span></div><div class="skill-item"><span>JavaScript</span><span class="skill-level">Intermediate</span></div><div class="skill-item"><span>Python</span><span class="skill-level">Advanced</span></div><div class="skill-item"><span>AI Studios</span><span class="skill-level">Intermediate</span></div><div class="skill-item"><span>Power BI</span><span class="skill-level">Advanced</span></div><div class="skill-item"><span>MySQL</span><span class="skill-level">Advanced</span></div><div class="skill-item"><span>Java</span><span class="skill-level">Intermediate</span></div><div class="skill-item"><span>C++</span><span class="skill-level">Intermediate</span></div><div class="skill-item"><span>Git &amp; GitHub</span><span class="skill-level">Advanced</span></div><div class="skill-item"><span>Problem Solving</span><span class="skill-level">Advanced</span></div></div></div></section>
+    <hr class="divider">
+    <section id="projects"><div class="section-inner"><div class="section-label">Selected work</div><h2 class="section-title">Projects with a purpose.</h2><p class="section-desc">A few projects where I put software, data, and product thinking into practice.</p><div class="projects-grid"><a class="project-card" href="https://auguzcht.github.io/TokenMate-Automata/" target="_blank" rel="noopener noreferrer"><div class="project-card-icon"><i class="fas fa-robot"></i></div><h3>TokenMate Automata</h3><p>A tool for automating token management and verification processes.</p><span class="arrow">View project <i class="fas fa-arrow-right"></i></span></a><a class="project-card" href="https://trackntoms-pos.vercel.app/reports?tab=financial" target="_blank" rel="noopener noreferrer"><div class="project-card-icon"><i class="fas fa-cash-register"></i></div><h3>TrackNToms POS System</h3><p>A point of sale system with financial reporting capabilities.</p><span class="arrow">View project <i class="fas fa-arrow-right"></i></span></a><a class="project-card" href="https://ecostep-tau.vercel.app" target="_blank" rel="noopener noreferrer"><div class="project-card-icon"><i class="fas fa-leaf"></i></div><h3>EcoStep</h3><p>A sustainable environmental tracking and eco-friendly initiative platform.</p><span class="arrow">View project <i class="fas fa-arrow-right"></i></span></a></div></div></section>
+    <hr class="divider">
+    <section id="certifications"><div class="section-inner"><div class="section-label">Credentials</div><h2 class="section-title">Certifications.</h2><p class="section-desc">A visual record of continued learning and professional development.</p><div class="cert-grid"><div class="cert-card" onclick="openCertModal(this)"><img src="cert1.png" alt="Certificate 1" loading="lazy"><div class="cert-overlay">Click to view</div></div><div class="cert-card" onclick="openCertModal(this)"><img src="cert2.png" alt="Certificate 2" loading="lazy"><div class="cert-overlay">Click to view</div></div><div class="cert-card" onclick="openCertModal(this)"><img src="cert3.png" alt="Certificate 3" loading="lazy"><div class="cert-overlay">Click to view</div></div><div class="cert-card" onclick="openCertModal(this)"><img src="cert4.png" alt="Certificate 4" loading="lazy"><div class="cert-overlay">Click to view</div></div><div class="cert-card" onclick="openCertModal(this)"><img src="12.png" alt="Certificate 12" loading="lazy"><div class="cert-overlay">Click to view</div></div><div class="cert-card" onclick="openCertModal(this)"><img src="13.png" alt="Certificate 13" loading="lazy"><div class="cert-overlay">Click to view</div></div><div class="cert-card" onclick="openCertModal(this)"><img src="14.png" alt="Certificate 14" loading="lazy"><div class="cert-overlay">Click to view</div></div><div class="cert-card" onclick="openCertModal(this)"><img src="15.png" alt="Certificate 15" loading="lazy"><div class="cert-overlay">Click to view</div></div><div class="cert-card" onclick="openCertModal(this)"><img src="16.png" alt="Certificate 16" loading="lazy"><div class="cert-overlay">Click to view</div></div><div class="cert-card" onclick="openCertModal(this)"><img src="aws.png" alt="AWS Certificate 1" loading="lazy"><div class="cert-overlay">Click to view</div></div><div class="cert-card" onclick="openCertModal(this)"><img src="aws2.png" alt="AWS Certificate 2" loading="lazy"><div class="cert-overlay">Click to view</div></div></div></div></section>
+    <hr class="divider">
+    <section id="experience"><div class="section-inner"><div class="section-label">Experience</div><h2 class="section-title">Where I have contributed.</h2><p class="section-desc">Experiences that have strengthened my technical, communication, and leadership skills.</p><div class="exp-grid"><div class="exp-card"><div class="exp-icon"><i class="fas fa-headset"></i></div><div><h3>BPO Company</h3><span class="exp-role">Customer Support &amp; IT Services</span><p>Assisting with customer support and IT services, handling technical inquiries and providing solutions.</p></div></div><div class="exp-card"><div class="exp-icon"><i class="fas fa-code"></i></div><div><h3>Computer Science Department</h3><span class="exp-role">Department President</span><p>Leading initiatives, organizing tech events, and improving learning experiences for peers.</p></div></div><div class="exp-card"><div class="exp-icon"><i class="fas fa-mug-hot"></i></div><div><h3>Tom N Toms</h3><span class="exp-role">Barista</span><p>Crafting beverages, managing inventory, and providing excellent customer service in a fast-paced environment.</p></div></div></div></div></section>
+    <hr class="divider">
+    <section id="achievements"><div class="section-inner"><div class="section-label">Milestones</div><h2 class="section-title">A few things I am proud of.</h2><div class="ach-grid"><div class="ach-card"><span class="ach-icon"><i class="fas fa-trophy"></i></span><h3>Department Leadership</h3><p>Led the Computer Science department as President, organizing tech events and initiatives.</p></div><div class="ach-card"><span class="ach-icon"><i class="fas fa-book-open"></i></span><h3>Dean's Lister</h3><p>Consistent Dean's Lister maintaining academic excellence throughout the program.</p></div><div class="ach-card"><span class="ach-icon"><i class="fas fa-globe-asia"></i></span><h3>International Leadership</h3><p>Team Leader for Thailand Leader's Conference, representing the institution.</p></div><div class="ach-card"><span class="ach-icon"><i class="fas fa-chart-line"></i></span><h3>Technical Expertise</h3><p>Specialized in Data Science and Backend Development, building databases and data-driven solutions.</p></div></div></div></section>
+    <section id="contact" class="contact-section"><div class="section-inner contact-inner"><div class="section-label">Contact</div><h2 class="section-title">Let's build something useful.</h2><p class="section-desc">Feel free to reach out for collaborations or just a friendly hello.</p><a class="contact-email" href="mailto:joshuamartinfamor@gmail.com">joshuamartinfamor@gmail.com</a><div class="social-row"><a class="social-btn" href="https://github.com/Joshieww" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a><a class="social-btn" href="https://www.linkedin.com/in/joshua-famor-069a94254" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a><a class="social-btn" href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i> Twitter</a></div></div></section>
+    <script>
+        function toggleMobileMenu() { const menu = document.getElementById('navbar-menu'); const icon = document.querySelector('.nav-toggle i'); menu.classList.toggle('show'); icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times'); }
+        function scrollToProjects() { document.getElementById('projects').scrollIntoView({ behavior: 'smooth' }); }
+        document.querySelectorAll('.nav-links a, .btn-secondary').forEach(link => link.addEventListener('click', event => { event.preventDefault(); document.getElementById(link.getAttribute('href').slice(1)).scrollIntoView({ behavior: 'smooth' }); document.getElementById('navbar-menu').classList.remove('show'); }));
+        const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }), { threshold: .1 }); document.querySelectorAll('section:not(.hero)').forEach(section => observer.observe(section));
+        window.addEventListener('scroll', () => { document.querySelectorAll('section[id]').forEach(section => { const link = document.querySelector(`.nav-links a[href="#${section.id}"]`); if (link && section.getBoundingClientRect().top <= 120 && section.getBoundingClientRect().bottom >= 120) { document.querySelectorAll('.nav-links a').forEach(item => item.classList.remove('active')); link.classList.add('active'); } }); });
+        function openCertModal(card) { const image = card.querySelector('img'); const modal = document.createElement('div'); modal.className = 'cert-modal'; modal.innerHTML = `<button class="cert-modal-close" aria-label="Close certificate">&times;</button><img src="${image.src}" alt="${image.alt}">`; document.body.appendChild(modal); const close = () => modal.remove(); modal.querySelector('button').onclick = close; modal.onclick = event => { if (event.target === modal) close(); }; document.addEventListener('keydown', function escape(event) { if (event.key === 'Escape') { close(); document.removeEventListener('keydown', escape); } }); }
+        document.addEventListener('click', event => { const nav = document.querySelector('nav'); const menu = document.getElementById('navbar-menu'); if (!nav.contains(event.target) && menu.classList.contains('show')) toggleMobileMenu(); });
+    </script>
 </body>
 </html>
