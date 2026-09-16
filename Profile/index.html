@@ -62,5 +62,80 @@
         function openCertModal(card) { const image = card.querySelector('img'); const modal = document.createElement('div'); modal.className = 'cert-modal'; modal.innerHTML = `<div class="cert-modal-toolbar"><button type="button" class="cert-zoom-out" aria-label="Zoom out">&minus;</button><button type="button" class="cert-zoom-reset" aria-label="Reset zoom">100%</button><button type="button" class="cert-zoom-in" aria-label="Zoom in">+</button></div><button class="cert-modal-close" aria-label="Close certificate">&times;</button><img src="${image.src}" alt="${image.alt}">`; document.body.appendChild(modal); const modalImage = modal.querySelector('img'); let zoom = 1; const updateZoom = () => { zoom = Math.min(3, Math.max(1, zoom)); modalImage.style.transform = `scale(${zoom})`; modalImage.classList.toggle('is-zoomed', zoom > 1); modal.querySelector('.cert-zoom-reset').textContent = `${Math.round(zoom * 100)}%`; }; modal.querySelector('.cert-zoom-in').onclick = () => { zoom += .25; updateZoom(); }; modal.querySelector('.cert-zoom-out').onclick = () => { zoom -= .25; updateZoom(); }; modal.querySelector('.cert-zoom-reset').onclick = () => { zoom = 1; updateZoom(); }; modalImage.ondblclick = () => { zoom = zoom > 1 ? 1 : 2; updateZoom(); }; modalImage.onwheel = event => { event.preventDefault(); zoom += event.deltaY < 0 ? .25 : -.25; updateZoom(); }; const close = () => modal.remove(); modal.querySelector('.cert-modal-close').onclick = close; modal.onclick = event => { if (event.target === modal) close(); }; document.addEventListener('keydown', function escape(event) { if (event.key === 'Escape') { close(); document.removeEventListener('keydown', escape); } }); }
         document.addEventListener('click', event => { const nav = document.querySelector('nav'); const menu = document.getElementById('navbar-menu'); if (!nav.contains(event.target) && menu.classList.contains('show')) toggleMobileMenu(); });
     </script>
+    <script>
+        const aboutText = document.querySelector('.about-text');
+        if (aboutText) {
+            aboutText.insertAdjacentHTML('afterbegin', '<p><strong>AI Engineer</strong> focused on building practical AI-powered solutions.</p>');
+        }
+
+        const aiToolsGrid = document.querySelector('.ai-tools-grid');
+        if (aiToolsGrid) {
+            aiToolsGrid.insertAdjacentHTML('beforeend', '<div class="skill-item"><span>Claude</span><span class="skill-level">AI</span></div><div class="skill-item"><span>Claude Code</span><span class="skill-level">AI Development</span></div><div class="skill-item"><span>OpenAI Codex</span><span class="skill-level">AI Development</span></div><div class="skill-item"><span>ChatGPT</span><span class="skill-level">AI</span></div><div class="skill-item"><span>Gemini</span><span class="skill-level">AI</span></div>');
+        }
+
+        document.querySelectorAll('.capability-group').forEach(group => {
+            const graph = group.querySelector('.skills-grid');
+            const root = document.createElement('div');
+            root.className = 'graph-root';
+            root.textContent = group.querySelector('summary > span:first-child').textContent;
+            graph.prepend(root);
+            const summary = group.querySelector('summary');
+            let closeTimer;
+
+            const drawGraph = () => {
+                graph.querySelector('.graph-lines')?.remove();
+                const lines = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                lines.classList.add('graph-lines');
+                graph.prepend(lines);
+                requestAnimationFrame(() => {
+                    const graphRect = graph.getBoundingClientRect();
+                    const rootRect = root.getBoundingClientRect();
+                    const rootX = rootRect.left + rootRect.width / 2 - graphRect.left;
+                    const rootY = rootRect.bottom - graphRect.top;
+                    const nodes = [...graph.querySelectorAll('.skill-item')];
+                    lines.setAttribute('viewBox', `0 0 ${graphRect.width} ${graphRect.height}`);
+                    nodes.forEach((node, index) => {
+                        const nodeRect = node.getBoundingClientRect();
+                        const nodeX = nodeRect.left + nodeRect.width / 2 - graphRect.left;
+                        const nodeY = nodeRect.top - graphRect.top;
+                        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                        path.setAttribute('d', `M ${rootX} ${rootY} L ${rootX} ${nodeY - 12} L ${nodeX} ${nodeY - 12} L ${nodeX} ${nodeY}`);
+                        path.style.animationDelay = `${index * .09}s`;
+                        lines.appendChild(path);
+                        path.style.setProperty('--line-length', `${path.getTotalLength()}px`);
+                    });
+                });
+            };
+
+            summary.addEventListener('click', event => {
+                event.preventDefault();
+                const skills = [...graph.querySelectorAll('.skill-item')];
+                if (group.open) {
+                    group.classList.remove('is-closing');
+                    group.classList.add('is-closing');
+                    skills.forEach((skill, index) => skill.style.setProperty('--skill-close-delay', `${(skills.length - index - 1) * .08}s`));
+                    graph.querySelectorAll('.graph-lines path').forEach((path, index, paths) => path.style.animationDelay = `${(paths.length - index - 1) * .07}s`);
+                    closeTimer = setTimeout(() => {
+                        group.open = false;
+                        group.classList.remove('is-closing');
+                        graph.querySelector('.graph-lines')?.remove();
+                    }, 1200);
+                    return;
+                }
+
+                clearTimeout(closeTimer);
+                group.open = true;
+                group.classList.add('is-closing');
+                group.classList.remove('is-closing');
+                skills.forEach((skill, index) => skill.style.setProperty('--skill-delay', `${index * .09}s`));
+                drawGraph();
+            });
+        });
+
+        const ieeeAchievement = [...document.querySelectorAll('#achievements .ach-card')].find(card => card.querySelector('h3')?.textContent.includes('IEEE Author'));
+        if (ieeeAchievement) {
+            ieeeAchievement.querySelector('p').insertAdjacentHTML('beforeend', ' <a href="https://ieeexplore.ieee.org/document/11666504" target="_blank" rel="noopener noreferrer">Read the IEEE study <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>');
+        }
+    </script>
 </body>
 </html>
